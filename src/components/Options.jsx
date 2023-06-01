@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Badge } from 'reactstrap'
 
 export const Options = ({ question, setState, setQuestionsList, isLoading }) => {
-    const [isOptionChecked, setIsOptionChecked] = useState(false)
 
     // Return Alphabates based on optoions like A,B,C,D
     function AlphaBateReturnOnQuestionId(id) {

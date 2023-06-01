@@ -39,13 +39,23 @@ export const PersonalityTest = () => {
 
     const [isUpdate, setIsUpdate] = useState(null)
 
-    // Init Function
-    useEffect(() => updateQuestion(), [isUpdate, params])
+    // Init
+    useEffect(() => {
+        if (params) {
+            let parm = params.split(",")
+            questionsList.map((question, i) => {
+                let answerId = parm[i]
+                question.options.forEach((option) => {
+                    if (answerId == option.id) option.checked = true
+                })
+                return question
+            })
+        }
+    }, [])
 
-    // reset
-    // useEffect(() => {
-    //     if (state.isFinish) setState(initialValues)
-    // }, [questionsList])
+
+    // Update Function
+    useEffect(() => updateQuestion(), [isUpdate, params])
 
     function updateQuestion() {
         if (params) {
@@ -113,7 +123,7 @@ export const PersonalityTest = () => {
                         }
                         {state.isFinish && <div className='text-center'>
                             <h5>Your Result</h5>
-                            <h2>You are more of a {state.result}</h2>
+                            <h2>You are more of an {state.result}</h2>
                             <br />
                             <br />
                             <p>Are you willing to re-attempt?</p>

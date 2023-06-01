@@ -5,33 +5,35 @@ import { Button } from 'reactstrap'
 
 export const Actions = ({ state: { checked, isFirst, params, isLast }, setState, update, questions }) => {
 
-    const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
+    const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
 
     // URL Answers
-    const queryParams = searchParams.get('answer');
+    const queryParams = searchParams.get('answer')
 
     // Update Query Params in URL
     const updateQueryParam = (value) => {
         if (value !== undefined && value !== null) {
-            if (queryParams) navigate({ pathname: '/', search: `?answer=${[queryParams + ',' + value]}` });
-            else navigate({ pathname: '/', search: `?answer=${[value]}` });
+            if (queryParams) navigate({ pathname: '/', search: `?answer=${[queryParams + ',' + value]}` })
+            else navigate({ pathname: '/', search: `?answer=${[value]}` })
 
             update((prev) => !prev)
         } else {
             if (queryParams && queryParams.split(",").length === 1) {
                 navigate({ pathname: '/' })
+                setState((prev) => ({ ...prev, params: queryParams }))
             } else {
                 const str = queryParams.split(",")
-                const arr = str.pop()
+                const answerId = str.pop()
                 const updatedValue = str.join(",")
+                setState((prev) => ({ ...prev, params: answerId }))
                 navigate({ pathname: '/', search: `?answer=${[updatedValue]}` })
             }
 
             update((prev) => !prev)
         }
 
-    };
+    }
 
     async function nextQuestion() {
         setState((prev) => ({ ...prev, loading: false, checked: false, next: true, isFirst: false }))
