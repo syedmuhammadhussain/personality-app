@@ -72,18 +72,45 @@ export const Actions = ({ state: { checked, isFirst, params, isLast }, setState,
 
     return (
         <>
-            {!isLast && isFirst && <Button size='xl' color='primary' block disabled={!checked} onClick={nextQuestion}>
+            {!isLast && isFirst && <Button
+                size='xl'
+                color='primary'
+                block
+                disabled={!checked}
+                data-testid="next-button"
+                onClick={nextQuestion}>
                 Next Question {'>'}</Button>}
+
             {!isLast && !isFirst && <div style={{ display: 'flex' }}>
-                <Button size='xl' color='primary me-1' block onClick={prevQuestion}>
+                <Button
+                    size='xl'
+                    color='primary me-1'
+                    block
+                    onClick={prevQuestion}>
                     Prev Question {'<'}</Button>
-                <Button size='xl' color='primary ms-1' block disabled={!checked} onClick={nextQuestion}>
+
+                <Button
+                    size='xl'
+                    color='primary ms-1'
+                    block
+                    disabled={!checked}
+                    onClick={nextQuestion}>
                     Next Question {'>'}</Button>
             </div>}
+
             {isLast && <div style={{ display: 'flex' }}>
-                <Button size='xl' color='primary me-1' block onClick={prevQuestion}>
+                <Button
+                    size='xl'
+                    color='primary me-1'
+                    block
+                    onClick={prevQuestion}>
                     Prev Question {'<'}</Button>
-                <Button size='xl' color='success ms-1' block disabled={!checked} onClick={finish}>Finish</Button>
+                <Button
+                    size='xl'
+                    color='success ms-1'
+                    block
+                    disabled={!checked}
+                    onClick={finish}>Finish</Button>
             </div>}
         </>
     )

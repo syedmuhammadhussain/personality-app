@@ -96,31 +96,27 @@ export const PersonalityTest = () => {
             <Row style={{ justifyContent: 'center' }}>
                 <Col xl={6} lg={8} md={8}>
                     <div style={{ padding: 20 }}>
-                        {!state.isFinish && state.question &&
-                            (
-                                <>
-                                    <Questions
-                                        question={state.question.question}
-                                        total={state.total}
-                                        current={state.current}
-                                    />
-                                    <Options
-                                        question={state.question}
-                                        setState={setState}
-                                        setQuestionsList={setQuestionsList}
-                                        isLoading={state.loading}
-                                    />
-                                    <br />
-                                    <br />
-                                    <Actions
-                                        setState={setState}
-                                        state={state}
-                                        update={setIsUpdate}
-                                        questions={questionsList}
-                                    />
-                                </>
-                            )
-                        }
+                        <>
+                            <Questions
+                                question={state.question.question}
+                                total={state.total}
+                                current={state.current}
+                            />
+                            <Options
+                                question={state.question}
+                                setState={setState}
+                                setQuestionsList={setQuestionsList}
+                                isLoading={state.loading}
+                            />
+                            <br />
+                            <br />
+                            <Actions
+                                setState={setState}
+                                state={state}
+                                update={setIsUpdate}
+                                questions={questionsList}
+                            />
+                        </>
                         {state.isFinish && <div className='text-center'>
                             <h5>Your Result</h5>
                             <h2>You are more of an {state.result}</h2>
