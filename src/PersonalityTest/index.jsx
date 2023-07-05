@@ -96,7 +96,7 @@ export const PersonalityTest = () => {
             <Row style={{ justifyContent: 'center' }}>
                 <Col xl={6} lg={8} md={8}>
                     <div style={{ padding: 20 }}>
-                        <>
+                        {!state.isFinish && <>
                             <Questions
                                 question={state.question.question}
                                 total={state.total}
@@ -116,7 +116,7 @@ export const PersonalityTest = () => {
                                 update={setIsUpdate}
                                 questions={questionsList}
                             />
-                        </>
+                        </>}
                         {state.isFinish && <div className='text-center'>
                             <h5>Your Result</h5>
                             <h2>You are more of an {state.result}</h2>
